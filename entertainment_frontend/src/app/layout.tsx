@@ -1,4 +1,4 @@
-import { clsx } from "clsx";
+import clsx from "clsx";
 import "@/style/globals.css";
 import { Outfit } from "next/font/google";
 
@@ -15,8 +15,27 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en">
-			<body className={clsx("body", outfitFont.variable)}>{children}</body>
+		<html
+			lang="en"
+			className={clsx(
+				"html",
+				`
+					h-screen w-screen
+				`
+			)}
+		>
+			<body
+				className={clsx(
+					"body",
+					`
+						h-full w-full
+						bg-blue-dark
+					`,
+					outfitFont.variable
+				)}
+			>
+				{children}
+			</body>
 		</html>
 	);
 }
