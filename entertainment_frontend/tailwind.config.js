@@ -26,7 +26,7 @@ module.exports = {
 			fontSize: {
 				"heading-l": [
 					"3.2rem",
-					{ letterSpacing: "-0.5rem", lineHeight: "auto", fontWeight: 300, fontFamily: "outfit" },
+					{ letterSpacing: "-0.05rem", lineHeight: "auto", fontWeight: 300, fontFamily: "outfit" },
 				],
 				"heading-m": ["2.4rem", { letterSpacing: "0rem", lineHeight: "auto", fontWeight: 300 }],
 				"heading-s": ["2.4rem", { letterSpacing: "0rem", lineHeight: "auto", fontWeight: 500 }],
