@@ -3,7 +3,6 @@ import path from "path";
 
 const config: StorybookConfig = {
 	stories: [
-		// "../src/**/*.mdx",
 		"../src/app/**/*.stories.@(js|jsx|ts|tsx)",
 		"../src/components/**/*.stories.@(js|jsx|ts|tsx)",
 	],
@@ -22,7 +21,7 @@ const config: StorybookConfig = {
 	// need this for assets
 	staticDirs: ["../public", "../src"],
 	// so that zustand store works in storybook
-	webpackFinal: async (config, { configType }) => {
+	webpackFinal: async (config) => {
 		config.resolve = config.resolve ?? {};
 		config.resolve.alias = {
 			...config.resolve.alias,
