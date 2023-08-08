@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React, { ReactElement } from "react";
 import Logo from "../logo";
-import NavButton from "../button/navButton";
+import NavBtn from "../button/navBtn";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import AvatarPic from "../avatar";
 
@@ -47,10 +47,10 @@ const Menu: React.FC = () => {
                 `
 							)}
 						>
-							<NavButton navType={"home"} />
-							<NavButton navType={"movie"} />
-							<NavButton navType={"tv"} />
-							<NavButton navType={"bookmark"} />
+							<NavBtn navType={"home"} />
+							<NavBtn navType={"movie"} />
+							<NavBtn navType={"tv"} />
+							<NavBtn navType={"bookmark"} />
 						</div>
 					</NavigationMenu.Link>
 				</NavigationMenu.Item>

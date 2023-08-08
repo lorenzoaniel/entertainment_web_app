@@ -1,11 +1,11 @@
 import { StoryObj, Meta } from "@storybook/react";
-import NavButton from ".";
+import NavBtn from ".";
 
-type Story = StoryObj<typeof NavButton>;
+type Story = StoryObj<typeof NavBtn>;
 
-const meta: Meta<typeof NavButton> = {
-	title: "components/button/NavButton",
-	component: NavButton,
+const meta: Meta<typeof NavBtn> = {
+	title: "components/button/NavBtn",
+	component: NavBtn,
 	argTypes: {
 		navType: {
 			control: {
