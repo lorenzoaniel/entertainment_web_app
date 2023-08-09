@@ -24,7 +24,29 @@ export const PrimaryTrending: Story = {
 			rating: "PG",
 			isBookmarked: false,
 			isTrending: true,
-			thumbnailSrc: "./assets/thumbnails/beyond-earth/trending/small.jpg",
+			thumbnailSrc: {
+				small: "./assets/thumbnails/beyond-earth/trending/small.jpg",
+				medium: "./assets/thumbnails/beyond-earth/trending/medium.jpg",
+				large: "./assets/thumbnails/beyond-earth/trending/large.jpg",
+			},
+		},
+	},
+};
+
+export const PrimaryNonTrending: Story = {
+	args: {
+		cardProps: {
+			category: "Movie",
+			year: 2023,
+			title: "Trending Title Test",
+			rating: "PG",
+			isBookmarked: false,
+			isTrending: false,
+			thumbnailSrc: {
+				small: "./assets/thumbnails/beyond-earth/trending/small.jpg",
+				medium: "./assets/thumbnails/beyond-earth/trending/medium.jpg",
+				large: "./assets/thumbnails/beyond-earth/trending/large.jpg",
+			},
 		},
 	},
 };

@@ -17,8 +17,8 @@ const BookmarkBtn: React.FC<IProps> = ({ isBookmarked }) => {
           bg-blue-dark opacity-50
           flex justify-center items-center
           justify-self-end
-          col-start-4 row-span-1
-          mt-[0.8rem] mr-[0.8rem]
+          col-start-4 col-end-4 row-start-1 row-end-1
+          mt-[0.8rem] mr-[0.8rem] md:mt-[1.6rem] md:mr-[2.4rem]
         `
 			)}
 		>

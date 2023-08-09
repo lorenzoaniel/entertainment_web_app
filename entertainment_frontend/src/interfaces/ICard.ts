@@ -35,5 +35,9 @@ export interface ICard {
 	/**
 	 * The URL or source of the thumbnail image for the media item.
 	 */
-	thumbnailSrc: string;
+	thumbnailSrc: {
+		small: string;
+		medium: string;
+		large: string;
+	};
 }
