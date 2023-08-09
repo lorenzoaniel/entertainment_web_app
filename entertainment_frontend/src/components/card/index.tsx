@@ -14,7 +14,11 @@ const Card: React.FC<IProps> = ({ cardProps }) => {
 			className={clsx(
 				cardProps.title + "-card",
 				`
-					w-[24rem] h-[14rem] md:h-[23rem] md:w-[47rem]
+					${
+						cardProps.isTrending
+							? "w-[24rem] h-[14rem] md:h-[23rem] md:w-[47rem]"
+							: "w-[16.4rem] h-[15.4rem] md:h-[19.2rem] md:w-[22rem] lg:h-[22.6rem] lg:w-[28rem]"
+					}
 					grid grid-cols-4 grid-rows-3
 				`
 			)}
@@ -33,14 +37,18 @@ const Card: React.FC<IProps> = ({ cardProps }) => {
 				height={cardProps.isTrending ? 140 : 110}
 				alt={cardProps.title + " img"}
 			/>
-			<BookmarkBtn isBookmarked={cardProps.isBookmarked} />
+			<BookmarkBtn isBookmarked={cardProps.isBookmarked} isTrending={cardProps.isTrending} />
 			<div
 				className={clsx(
 					cardProps.title + "-card-desc-wrapper",
 					`
-						col-start-1 col-end-5 row-start-3 row-end-4
+						${
+							cardProps.isTrending
+								? "col-start-1 col-end-5 row-start-3 row-end-4"
+								: "col-start-1 col-end-5 row-start-4 row-end-4"
+						}
 						flex flex-col items-start justify-end
-						pl-[1.6rem] pb-[1.6rem]
+						${cardProps.isTrending ? "pl-[1.6rem] pb-[1.6rem]" : "mt-[0.8rem]"}
 					`
 				)}
 			>
@@ -50,12 +58,17 @@ const Card: React.FC<IProps> = ({ cardProps }) => {
 						`
 							w-[13.2rem] md:w-[15rem]
 							flex items-center justify-between
-							text-body-s text-white-pure md:text-body-m
+							text-body-s text-white-pure ${
+								cardProps.isTrending
+									? "text-[1.2rem] md:text-body-m"
+									: "text-[1.1rem] md:text-body-s"
+							} 
 							opacity-75
 						`
 					)}
 				>
-					<time dateTime={`${cardProps.year}`}>{cardProps.year}</time> &bull;
+					<time dateTime={`${cardProps.year}`}>{cardProps.year}</time>
+					&bull;
 					<Image
 						className={clsx(
 							cardProps.title + "-card-desc-wrapper-tags-categoryicon",
@@ -68,14 +81,24 @@ const Card: React.FC<IProps> = ({ cardProps }) => {
 						height={12}
 						alt={cardProps.title + "-card-desc-wrapper-tags-categoryicon"}
 					></Image>
-					{cardProps.category === "Movie" ? "Movie" : "TV Series"} &bull;
-					{" " + cardProps.rating}
+					<span className={clsx(cardProps.title + "-card-desc-wrapper-tags-categorytype")}>
+						{cardProps.category === "Movie" ? "Movie" : "TV Series"}
+					</span>
+					&bull;
+					<span className={clsx(cardProps.title + "-card-desc-wrapper-tags-rating")}>
+						{" " + cardProps.rating}
+					</span>
 				</p>
 				<h2
 					className={clsx(
 						cardProps.title + "-card-desc-wrapper-title",
 						`
-							text-body-m font-medium leading-normal text-white-pure md:text-heading-s
+							${
+								cardProps.isTrending
+									? "text-body-m md:text-heading-s"
+									: "text-body-m text-[1.4rem] font-medium md:text-heading-xs"
+							}
+							font-medium leading-normal text-white-pure
 						`
 					)}
 				>
