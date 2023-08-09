@@ -2,14 +2,11 @@ import type { StorybookConfig } from "@storybook/nextjs";
 import path from "path";
 
 const config: StorybookConfig = {
-	stories: [
-		// "../src/**/*.mdx",
-		"../src/app/**/*.stories.@(js|jsx|ts|tsx)",
-		"../src/components/**/*.stories.@(js|jsx|ts|tsx)",
-	],
+	stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
 	addons: [
 		"@storybook/addon-links",
 		"@storybook/addon-essentials",
+		"@storybook/addon-onboarding",
 		"@storybook/addon-interactions",
 	],
 	framework: {
@@ -19,8 +16,8 @@ const config: StorybookConfig = {
 	docs: {
 		autodocs: "tag",
 	},
-	// need this for assets
-	staticDirs: ["../public", "../src"],
+	// need this for svg assets
+	staticDirs: ["../public"],
 	// so that zustand store works in storybook
 	webpackFinal: async (config, { configType }) => {
 		config.resolve = config.resolve ?? {};
@@ -28,8 +25,8 @@ const config: StorybookConfig = {
 			...config.resolve.alias,
 			"@": path.resolve(__dirname, "../src"),
 		};
-
 		return config;
 	},
 };
+
 export default config;
