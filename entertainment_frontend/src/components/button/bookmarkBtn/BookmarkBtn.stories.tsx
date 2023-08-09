@@ -4,7 +4,7 @@ import BookmarkBtn from ".";
 type Story = StoryObj<typeof BookmarkBtn>;
 
 const meta: Meta<typeof BookmarkBtn> = {
-	title: "components/BookmarkBtn",
+	title: "components/Button/BookmarkBtn",
 	component: BookmarkBtn,
 	tags: ["autodocs"],
 };
