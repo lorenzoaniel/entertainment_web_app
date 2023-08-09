@@ -9,11 +9,22 @@ export default function Home() {
 				"home-page",
 				`
           bg-transparent
+					flex
         `
 			)}
 		>
-			<Logo />
-			<CredentialsForm />
+			<div
+				className={clsx(
+					"home-page-layoutwrapper",
+					`
+						h-[44.9rem] w-fit
+						flex flex-col justify-between items-center
+					`
+				)}
+			>
+				<Logo />
+				<CredentialsForm />
+			</div>
 		</main>
 	);
 }
