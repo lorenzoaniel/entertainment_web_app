@@ -4,7 +4,7 @@ import NavBtn from ".";
 type Story = StoryObj<typeof NavBtn>;
 
 const meta: Meta<typeof NavBtn> = {
-	title: "components/button/NavBtn",
+	title: "components/Button/NavBtn",
 	component: NavBtn,
 	argTypes: {
 		navType: {

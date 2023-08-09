@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import React, { ReactElement } from "react";
+import React from "react";
 import Logo from "../logo";
 import NavBtn from "../button/navBtn";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";

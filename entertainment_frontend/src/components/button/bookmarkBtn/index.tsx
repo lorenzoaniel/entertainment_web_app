@@ -4,9 +4,10 @@ import React from "react";
 
 interface IProps {
 	isBookmarked: boolean;
+	isTrending: boolean;
 }
 
-const BookmarkBtn: React.FC<IProps> = ({ isBookmarked }) => {
+const BookmarkBtn: React.FC<IProps> = ({ isBookmarked, isTrending }) => {
 	return (
 		<button
 			className={clsx(
@@ -18,7 +19,11 @@ const BookmarkBtn: React.FC<IProps> = ({ isBookmarked }) => {
           flex justify-center items-center
           justify-self-end
           col-start-4 col-end-4 row-start-1 row-end-1
-          mt-[0.8rem] mr-[0.8rem] md:mt-[1.6rem] md:mr-[2.4rem]
+          ${
+						isTrending
+							? "mt-[0.8rem] mr-[0.8rem] md:mt-[1.6rem] md:mr-[2.4rem]"
+							: "mt-[0.8rem] mr-[0.8rem] md:mt-[1.4rem] md:mr-[1.4rem]"
+					}
         `
 			)}
 		>

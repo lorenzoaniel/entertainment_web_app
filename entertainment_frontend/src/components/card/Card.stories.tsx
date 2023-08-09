@@ -38,14 +38,14 @@ export const PrimaryNonTrending: Story = {
 		cardProps: {
 			category: "Movie",
 			year: 2023,
-			title: "Trending Title Test",
+			title: "Community of Ours",
 			rating: "PG",
 			isBookmarked: false,
 			isTrending: false,
 			thumbnailSrc: {
-				small: "./assets/thumbnails/beyond-earth/trending/small.jpg",
-				medium: "./assets/thumbnails/beyond-earth/trending/medium.jpg",
-				large: "./assets/thumbnails/beyond-earth/trending/large.jpg",
+				small: "./assets/thumbnails/the-great-lands/regular/small.jpg",
+				medium: "./assets/thumbnails/the-great-lands/regular/medium.jpg",
+				large: "./assets/thumbnails/the-great-lands/regular/large.jpg",
 			},
 		},
 	},
