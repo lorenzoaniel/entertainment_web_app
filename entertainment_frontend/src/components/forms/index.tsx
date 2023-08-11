@@ -64,7 +64,7 @@ const CredentialsForm: React.FC = () => {
 			className={clsx(
 				"credentials-form",
 				`
-					${selector.isLoginFormTypeState ? "h-[36.5rem]" : "h-[42rem]"} w-[32.7rem]
+					${selector.isLoginFormTypeState ? "h-[36.5rem]" : "h-[42rem]"} w-[30rem]
 					md:${selector.isLoginFormTypeState ? "h-[37.3rem]" : "h-[41.8rem]"} md:w-[40rem]
 					flex flex-col items-center justify-between
 					bg-blue-semidark
