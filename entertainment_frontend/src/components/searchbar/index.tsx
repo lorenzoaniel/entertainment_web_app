@@ -10,6 +10,7 @@ const Searchbar: React.FC = () => {
 				`
           w-fit h-fit
           flex items-center
+					lg:col-start-2 lg:row-span-1
         `
 			)}
 		>
