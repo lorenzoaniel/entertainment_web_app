@@ -4,7 +4,7 @@ import clsx from "clsx";
 
 export default function Home() {
 	return (
-		<section
+		<main
 			className={clsx(
 				"home-page",
 				`
@@ -26,6 +26,6 @@ export default function Home() {
 				<Logo />
 				<CredentialsForm />
 			</div>
-		</section>
+		</main>
 	);
 }
