@@ -1,4 +1,4 @@
-import { ICard } from "@/interfaces/ICard";
+import { ICard } from "@/interfaces/card/ICard";
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";

@@ -1,4 +1,4 @@
-import { ICard } from "@/interfaces/ICard";
+import { ICard } from "@/interfaces/card/ICard";
 import { createCard } from "@/lib/createCard";
 import clsx from "clsx";
 import React from "react";
