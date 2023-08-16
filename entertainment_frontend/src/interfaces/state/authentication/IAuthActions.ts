@@ -1,3 +1,3 @@
 export interface IAuthActions {
-	useSearchBar: (inputData: string, credType: "email" | "password" | "repeatPassword") => void;
+	useInputCreds: (inputData: string, credType: "email" | "password" | "repeatPassword") => void;
 }

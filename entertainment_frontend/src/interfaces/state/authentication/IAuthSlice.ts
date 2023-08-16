@@ -1,9 +1,7 @@
 import { IAuthActions } from "./IAuthActions";
-import { IAuthCreds } from "./IAuthCreds";
+import { IAuthStates } from "./IAuthStates";
 
 export interface IAuthSlice {
-	states: {
-		userCreds: IAuthCreds;
-	};
+	states: IAuthStates;
 	actions: IAuthActions;
 }
