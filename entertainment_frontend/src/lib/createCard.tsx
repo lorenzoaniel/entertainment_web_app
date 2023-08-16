@@ -1,5 +1,5 @@
 import Card from "@/components/card";
-import { ICard } from "@/interfaces/ICard";
+import { ICard } from "@/interfaces/card/ICard";
 
 export const createCard = (cardList: ICard[], isTrending: boolean): React.ReactNode[] => {
 	return cardList.map((cardData) => {
