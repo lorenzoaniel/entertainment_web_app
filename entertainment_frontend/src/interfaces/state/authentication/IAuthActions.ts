@@ -1,3 +1,6 @@
+// import { IFormData } from "@/interfaces/form/IFormData";
+
 export interface IAuthActions {
-	useInputCreds: (inputData: string, credType: "email" | "password" | "repeatPassword") => void;
+	useToggleFormType: () => void;
+	useSubmitForm: (formData: any) => void;
 }

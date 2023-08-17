@@ -2,30 +2,10 @@ import { IStore } from "@/interfaces/state/IStore";
 
 export const authSlice = (set: any) => ({
 	states: {
-		userCreds: {
-			email: "",
-			password: "",
-			repeatPassword: "",
-		},
 		isLoginFormType: true,
 	},
 
 	actions: {
-		useInputCreds: (inputData: string, credType: "email" | "password" | "repeatPassword") => {
-			set((state: IStore) => ({
-				mainState: {
-					...state.mainState,
-					auth: {
-						states: {
-							userCreds: {
-								...state.mainState.auth.states.userCreds,
-								[credType]: inputData,
-							},
-						},
-					},
-				},
-			}));
-		},
 		useToggleFormType: () => {
 			set((state: IStore) => ({
 				mainState: {
@@ -40,10 +20,9 @@ export const authSlice = (set: any) => ({
 				},
 			}));
 		},
-		useSubmitForm: () => {
-			/* 
-        take userCreds and send to api but for now in dev alert("form sent")
-      */
+		useSubmitForm: (formData: any) => {
+			// TODO: replace with api this is for testing purposes
+			alert(`submitted: ${JSON.stringify(formData, null, 2)}`);
 		},
 	},
 });
