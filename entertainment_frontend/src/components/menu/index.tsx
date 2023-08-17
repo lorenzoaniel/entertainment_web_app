@@ -14,6 +14,7 @@ const Menu: React.FC = () => {
           w-full h-[5.6rem] lg:h-[96rem] lg:w-[9.6rem]
           bg-blue-semidark
           flex flex-col justify-center lg:flex-row
+					lg:col-span-1 lg:row-span-full
           px-[1.6rem] md:py-[2.4rem]
           md:rounded-[1rem] lg:rounded-[2rem]
         `

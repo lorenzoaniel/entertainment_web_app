@@ -9,7 +9,7 @@ export default function Home() {
 				"home-page",
 				`
           bg-transparent
-					flex
+					flex justify-center items-start
         `
 			)}
 		>
@@ -19,6 +19,7 @@ export default function Home() {
 					`
 						h-[44.9rem] w-fit
 						flex flex-col justify-between items-center
+						mt-[4.8rem]
 					`
 				)}
 			>

@@ -1,4 +1,4 @@
-import { ICard } from "@/interfaces/ICard";
+import { ICard } from "@/interfaces/card/ICard";
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
@@ -32,7 +32,11 @@ const Card: React.FC<IProps> = ({ cardProps }) => {
 						rounded-[0.8rem]
 					`
 				)}
-				src={cardProps.thumbnailSrc.large}
+				src={
+					cardProps.isTrending
+						? cardProps.thumbnail.trending?.large || cardProps.thumbnail.regular.large
+						: cardProps.thumbnail.regular.large
+				}
 				width={cardProps.isTrending ? 240 : 164}
 				height={cardProps.isTrending ? 140 : 110}
 				alt={cardProps.title + " img"}
