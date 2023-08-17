@@ -5,18 +5,17 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import clsx from "clsx";
-
-/*
- TODO: add errors to input by putting conditional logic in placeholder 
-*/
+import { Store } from "@/state/store";
+import { IFormInputs } from "@/interfaces/form/IFormInputs";
 
 const mixins = {
 	formInputs: `
 		w-full h-[3.7rem]
 		bg-transparent
-		border-b-[0.1rem] border-blue-greyish
+		border-b-[0.1rem] focus:border-white-pure 
 		pl-[1.6rem]
 		
+		outline-none
 		text-body-m text-white-pure
 	`,
 };
@@ -43,24 +42,30 @@ const schemaSignUp = yup
 	.required();
 
 const CredentialsForm: React.FC = () => {
+	//DISPATCH
+	let dispatch = {
+		useSubmitForm: Store((state) => state.mainState.auth.actions.useSubmitForm),
+		useToggleFormType: Store((state) => state.mainState.auth.actions.useToggleFormType),
+	};
+
 	// SELECTORS
-	// change to store
+	// TODO: change to store
 	let selector = {
-		isLoginFormTypeState: true,
+		isLoginFormTypeState: Store((state) => state.mainState.auth.states.isLoginFormType),
 	};
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm({
+		clearErrors,
+	} = useForm<IFormInputs>({
 		resolver: yupResolver(selector.isLoginFormTypeState ? schemaLogin : schemaSignUp),
 	});
-	const onSubmit = (data: any) => console.log(data); // replace with api
 
 	return (
 		<form
-			onSubmit={handleSubmit(onSubmit)}
+			onSubmit={handleSubmit(dispatch.useSubmitForm)}
 			className={clsx(
 				"credentials-form",
 				`
@@ -88,23 +93,60 @@ const CredentialsForm: React.FC = () => {
 			</h1>
 
 			<input
-				className={clsx("credentials-form-input-email", mixins.formInputs)}
+				className={clsx(
+					"credentials-form-input-email",
+					mixins.formInputs,
+					`${errors.email ? "border-red-default" : "border-blue-greyish"}`
+				)}
 				{...register("email")}
+				onChange={() => clearErrors()}
 				placeholder="Email address"
 			/>
 
+			{errors.email && (
+				<p className="text-red-default" role="alert">
+					{errors.email.message}
+				</p>
+			)}
+
 			<input
-				className={clsx("credentials-form-input-password", mixins.formInputs)}
+				className={clsx(
+					"credentials-form-input-password",
+					mixins.formInputs,
+					`${errors.password ? "border-red-default" : "border-blue-greyish"}`
+				)}
 				{...register("password")}
+				onChange={() => clearErrors()}
 				placeholder="Password"
+				type="password"
 			/>
 
+			{errors.password && (
+				<p className="text-red-default" role="alert">
+					{errors.password.message}
+				</p>
+			)}
+
 			{selector.isLoginFormTypeState ? null : (
-				<input
-					className={clsx("credentials-form-input-passwordrepeat", mixins.formInputs)}
-					{...register("repeatPassword")}
-					placeholder="Repeat Password"
-				/>
+				<>
+					<input
+						className={clsx(
+							"credentials-form-input-passwordrepeat",
+							mixins.formInputs,
+							`${errors.repeatPassword ? "border-red-default" : "border-blue-greyish"}`
+						)}
+						{...register("repeatPassword")}
+						onChange={() => clearErrors()}
+						placeholder="Repeat Password"
+						type="password"
+					/>
+
+					{errors.repeatPassword && (
+						<p className="text-red-default" role="alert">
+							{errors.repeatPassword.message}
+						</p>
+					)}
+				</>
 			)}
 
 			<button
@@ -112,10 +154,10 @@ const CredentialsForm: React.FC = () => {
 					"credentials-form-submit",
 					`
 						w-full h-[4.8rem]
-						bg-red-default
+						bg-red-default hover:bg-white-pure
 						rounded-[0.6rem]
 
-						text-white-pure text-body-m
+						text-white-pure text-body-m hover:text-blue-semidark
 					`
 				)}
 				type="submit"
@@ -145,10 +187,15 @@ const CredentialsForm: React.FC = () => {
 						: "Already have an account?"}
 				</span>
 				<a
+					onClick={() => {
+						clearErrors();
+						dispatch.useToggleFormType();
+					}}
 					className={clsx(
 						"credentials-form-CTA-wrapper-redirect",
 						`
 							text-body-m text-red-default
+							hover:cursor-pointer
 						`
 					)}
 				>
