@@ -7,7 +7,7 @@ export default function LoggedIn({ children }: { children: React.ReactNode }) {
 	return (
 		<main
 			className={clsx(
-				"loggedin-home",
+				"loggedin",
 				`
           w-full h-full
           bg-transparent
