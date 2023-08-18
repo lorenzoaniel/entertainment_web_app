@@ -1,13 +1,15 @@
 import CredentialsForm from "@/components/forms";
 import Logo from "@/components/logo";
+import { _page_mixins } from "@/style/mixins/_page_mixins";
 import clsx from "clsx";
 
-export default function Home() {
+export default function Auth() {
 	return (
 		<main
 			className={clsx(
 				"home-page",
 				`
+					${_page_mixins.default}
           bg-transparent
 					flex justify-center items-start
         `
@@ -17,8 +19,8 @@ export default function Home() {
 				className={clsx(
 					"home-page-layoutwrapper",
 					`
-						h-[44.9rem] w-fit
-						flex flex-col justify-between items-center
+						h-fit w-fit
+						flex flex-col justify-between items-center gap-[5.84rem] md:gap-[7.24rem] lg:gap-[8.3rem]
 						mt-[4.8rem]
 					`
 				)}
