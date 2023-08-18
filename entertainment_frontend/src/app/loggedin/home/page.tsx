@@ -1,13 +1,11 @@
-import Menu from "@/components/menu";
-import Searchbar from "@/components/searchbar";
 import clsx from "clsx";
 import React from "react";
 
-export default function LoggedIn({ children }: { children: React.ReactNode }) {
+export default function Home() {
 	return (
-		<main
+		<section
 			className={clsx(
-				"loggedin",
+				"loggedin-home",
 				`
           w-full h-full
           bg-transparent
@@ -16,10 +14,6 @@ export default function LoggedIn({ children }: { children: React.ReactNode }) {
 					gap-y-[2.6rem] md:gap-y-[3.4rem] lg:gap-y-0
         `
 			)}
-		>
-			<Menu />
-			<Searchbar />
-			{children}
-		</main>
+		></section>
 	);
 }
