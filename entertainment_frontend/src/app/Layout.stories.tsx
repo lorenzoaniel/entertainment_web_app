@@ -1,5 +1,6 @@
 import { StoryObj, Meta } from "@storybook/react";
-import RootLayout from "./page";
+import RootLayout from "./layout";
+import Auth from "./page";
 
 type Story = StoryObj<typeof RootLayout>;
 
@@ -10,4 +11,12 @@ const meta: Meta<typeof RootLayout> = {
 };
 
 export default meta;
-export const Primary: Story = {};
+export const AuthPage: Story = {
+	render: () => {
+		return (
+			<RootLayout>
+				<Auth />
+			</RootLayout>
+		);
+	},
+};
