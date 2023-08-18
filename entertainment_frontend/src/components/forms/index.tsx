@@ -7,18 +7,7 @@ import * as yup from "yup";
 import clsx from "clsx";
 import { Store } from "@/state/store";
 import { IFormInputs } from "@/interfaces/form/IFormInputs";
-
-const mixins = {
-	formInputs: `
-		w-full h-[3.7rem]
-		bg-transparent
-		border-b-[0.1rem] focus:border-white-pure 
-		pl-[1.6rem]
-		
-		outline-none
-		text-body-m text-white-pure
-	`,
-};
+import { _input_mixins } from "@/style/mixins/_input_mixins";
 
 const schemaLogin = yup
 	.object({
@@ -49,16 +38,17 @@ const CredentialsForm: React.FC = () => {
 	};
 
 	// SELECTORS
-	// TODO: change to store
 	let selector = {
 		isLoginFormTypeState: Store((state) => state.mainState.auth.states.isLoginFormType),
 	};
 
+	//FORM
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 		clearErrors,
+		reset, // reset input elements
 	} = useForm<IFormInputs>({
 		resolver: yupResolver(selector.isLoginFormTypeState ? schemaLogin : schemaSignUp),
 	});
@@ -95,7 +85,7 @@ const CredentialsForm: React.FC = () => {
 			<input
 				className={clsx(
 					"credentials-form-input-email",
-					mixins.formInputs,
+					_input_mixins.formInputs,
 					`${errors.email ? "border-red-default" : "border-blue-greyish"}`
 				)}
 				{...register("email")}
@@ -112,7 +102,7 @@ const CredentialsForm: React.FC = () => {
 			<input
 				className={clsx(
 					"credentials-form-input-password",
-					mixins.formInputs,
+					_input_mixins.formInputs,
 					`${errors.password ? "border-red-default" : "border-blue-greyish"}`
 				)}
 				{...register("password")}
@@ -132,7 +122,7 @@ const CredentialsForm: React.FC = () => {
 					<input
 						className={clsx(
 							"credentials-form-input-passwordrepeat",
-							mixins.formInputs,
+							_input_mixins.formInputs,
 							`${errors.repeatPassword ? "border-red-default" : "border-blue-greyish"}`
 						)}
 						{...register("repeatPassword")}
@@ -189,6 +179,7 @@ const CredentialsForm: React.FC = () => {
 				<a
 					onClick={() => {
 						clearErrors();
+						reset();
 						dispatch.useToggleFormType();
 					}}
 					className={clsx(
