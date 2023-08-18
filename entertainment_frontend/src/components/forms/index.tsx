@@ -178,9 +178,9 @@ const CredentialsForm: React.FC = () => {
 				</span>
 				<a
 					onClick={() => {
-						clearErrors();
-						reset();
-						dispatch.useToggleFormType();
+						clearErrors(); // clear all errors
+						reset(); // clear input values
+						dispatch.useToggleFormType(); // toggle form type
 					}}
 					className={clsx(
 						"credentials-form-CTA-wrapper-redirect",
