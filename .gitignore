@@ -86,6 +86,6 @@ dump.rdb
 Thumbs.db
 
 # Virtual environment
-Lib/
-Scripts/
-pyvenv.cfg
+/entertainment_backend/backend_env/*
+!/entertainment_backend/backend_env/README.md
+!/entertainment_backend/backend_env/requirements.txt

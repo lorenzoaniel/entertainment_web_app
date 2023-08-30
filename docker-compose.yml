@@ -1,0 +1,56 @@
+version: "3.8"
+services:
+  frontend:
+    # Build the frontend service using the Dockerfile in the specified context
+    build:
+      context: ./entertainment_frontend
+    # Maps host port to container port
+    ports:
+      - "3000:3000"
+    # Specifies that the frontend service depends on the backend service
+    depends_on:
+      - backend
+    # For hot reload in development; comment out during production
+    volumes:
+      - ./entertainment_frontend:/frontend
+
+  backend:
+    # Build the backend service using the Dockerfile in the specified context
+    build:
+      context: ./entertainment_backend
+    # Maps host port to container port
+    ports:
+      - "8000:8000"
+    # Defines environment variables for the backend service
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+      - DEBUG=True # Adjust as needed
+    # Specifies that the backend service depends on the database service
+    depends_on:
+      - database
+    # For hot reload in development; comment out during production
+    volumes:
+      - ./entertainment_backend:/backend
+
+  database:
+    # Build the database service using the Dockerfile in the specified context
+    build:
+      context: ./entertainment_backend/database
+    # Use the official PostgreSQL image
+    image: postgres:latest
+    # Defines environment variables for the database service
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    # Maps host port to container port
+    ports:
+      - "5432:5432"
+    # Creates a named volume for persisting PostgreSQL data
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+# Defines a named volume for persisting PostgreSQL data
+volumes:
+  pgdata:
